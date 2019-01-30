@@ -17,9 +17,9 @@ class Login extends Component {
       password: this.state.account.password
     };
     const promise = await axios.post("http://localhost:8080/login", obj);
-    const accesstoken = promise.headers.accesstoken;
-    localStorage.setItem("accesstoken", accesstoken);
-    if (accesstoken) {
+    const authorization = promise.headers.Authorization;
+    localStorage.setItem("accesstoken", authorization);
+    if (authorization) {
       this.props.onLoginFlagChange(true);
       console.log("Login successed");
     }
